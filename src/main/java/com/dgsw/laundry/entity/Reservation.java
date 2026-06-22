@@ -1,8 +1,6 @@
 package com.dgsw.laundry.entity;
 
-import com.dgsw.laundry.enums.MachineType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +14,6 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Setter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "reservation")
 public class Reservation {
     @Id
@@ -27,12 +24,15 @@ public class Reservation {
     private String username;
 
     @Column
-    private LocalDateTime reservationTime;
+    private LocalDateTime reservationStart;
 
-    @CreatedDate
-    private LocalDateTime createdAt;
+    @Column
+    private LocalDateTime reservationEnd;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "machine_id")
     private Machine machine;
+
+    @CreatedDate
+    private LocalDateTime createdAt;
 }
