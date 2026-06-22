@@ -20,7 +20,7 @@ public class Machine {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String serialNumber;
 
     @Enumerated(EnumType.STRING)

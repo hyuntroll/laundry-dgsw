@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +29,10 @@ public class Reservation {
     @Column
     private LocalDateTime reservationTime;
 
-    @Column
-    private Long machineId;
+    @CreatedDate
+    private LocalDateTime createdAt;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "machine_id")
+    private Machine machine;
 }
