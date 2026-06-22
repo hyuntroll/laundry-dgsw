@@ -1,13 +1,13 @@
-package com.dgsw.school;
+package com.dgsw.laundry;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SchoolApplication {
+public class LaundryApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SchoolApplication.class, args);
+        SpringApplication.run(LaundryApplication.class, args);
     }
 
 }
