@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
-public class ReservationResponse {
+public class ReservationResponseDto {
     private Long id;
     private String username;
     private String machineSerialNumber;

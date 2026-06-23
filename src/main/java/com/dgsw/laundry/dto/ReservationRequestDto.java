@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReservationRequest {
+public class ReservationRequestDto {
     @NotBlank
     private String username;
 

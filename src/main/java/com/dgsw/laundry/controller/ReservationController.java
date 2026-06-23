@@ -1,8 +1,7 @@
 package com.dgsw.laundry.controller;
 
-import com.dgsw.laundry.dto.ReservationRequest;
-import com.dgsw.laundry.dto.ReservationResponse;
-import com.dgsw.laundry.entity.Reservation;
+import com.dgsw.laundry.dto.ReservationRequestDto;
+import com.dgsw.laundry.dto.ReservationResponseDto;
 import com.dgsw.laundry.service.ReservationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,12 +17,12 @@ public class ReservationController {
     private final ReservationService reservationService;
 
     @GetMapping
-    public ResponseEntity<List<ReservationResponse>> findall() {
+    public ResponseEntity<List<ReservationResponseDto>> findall() {
         return ResponseEntity.ok(reservationService.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<ReservationResponse> reserve(@RequestBody @Valid ReservationRequest request) {
+    public ResponseEntity<ReservationResponseDto> reserve(@RequestBody @Valid ReservationRequestDto request) {
         return ResponseEntity.status(201)
                 .body(reservationService.reserve(
                         request.getUsername(),

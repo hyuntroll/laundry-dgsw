@@ -1,6 +1,6 @@
 package com.dgsw.laundry.service;
 
-import com.dgsw.laundry.dto.ReservationResponse;
+import com.dgsw.laundry.dto.ReservationResponseDto;
 import com.dgsw.laundry.entity.Machine;
 import com.dgsw.laundry.entity.Reservation;
 import com.dgsw.laundry.repository.MachineRepository;
@@ -17,9 +17,9 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final MachineRepository machineRepository;
 
-    public List<ReservationResponse> findAll() {
+    public List<ReservationResponseDto> findAll() {
         return reservationRepository.findAll().stream()
-                .map(reservation -> new ReservationResponse(
+                .map(reservation -> new ReservationResponseDto(
                         reservation.getId(),
                         reservation.getUsername(),
                         reservation.getMachine().getSerialNumber(),
@@ -30,7 +30,7 @@ public class ReservationService {
                 .toList();
     }
 
-    public ReservationResponse reserve(
+    public ReservationResponseDto reserve(
             String username,
             LocalDateTime reservationStart,
             LocalDateTime reservationEnd,
@@ -51,7 +51,7 @@ public class ReservationService {
                 createReservation(username, reservationStart, reservationEnd, machine)
         );
 
-        return new ReservationResponse(
+        return new ReservationResponseDto(
                 reservation.getId(),
                 reservation.getUsername(),
                 machine.getSerialNumber(),
