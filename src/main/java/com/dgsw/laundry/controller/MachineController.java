@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
-public class MachineConrtoller {
+public class MachineController {
+
     @Autowired
     MachineService machineService;
 
@@ -18,4 +21,17 @@ public class MachineConrtoller {
     public Machine addMachine(@RequestBody @Valid MachineRequestDto request) {
         return machineService.registerMachine(request);
     }
+
+    @GetMapping("/machines")
+    public List<Machine> findAll() {
+        return machineService.findAll();
+    }
+
+    @DeleteMapping("/machines/{id}")
+    public String deleteMachine(@PathVariable Long id) {
+        machineService.deleteMachine(id);
+        return "기기가 삭제되었습니다.";
+    }
 }
+
+
