@@ -12,10 +12,8 @@ import java.util.List;
 @Service
 @Slf4j
 public class MachineService {
-
     @Autowired
     MachineRepository machineRepository;
-
     public Machine registerMachine(MachineRequestDto machineRequest) {
         Machine machine = new Machine();
         machine.setType(machineRequest.getMachineType());
@@ -28,5 +26,16 @@ public class MachineService {
 
     public List<Machine> getMachinesByFloor(Integer floor) {
         return machineRepository.findMachineByFloor(floor);
+    }
+
+    public List<Machine> findAll() {
+        return machineRepository.findAll();
+    }
+
+    public void deleteMachine(Long id) {
+        Machine machine = machineRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("기기를 찾을 수 없습니다."));
+        machineRepository.delete(machine);
     }
 }
