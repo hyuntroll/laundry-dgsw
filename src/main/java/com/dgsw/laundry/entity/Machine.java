@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static jakarta.persistence.GenerationType.*;
 
 @Getter
@@ -29,6 +32,10 @@ public class Machine {
     @Column
     private int floor;
 
-    @Column
-    private boolean reserved;
+    @OneToMany(
+            mappedBy = "machine",
+            cascade = CascadeType.REMOVE,
+            orphanRemoval = true
+    )
+    private List<Reservation> reservations = new ArrayList<>();
 }

@@ -36,6 +36,10 @@ public class ReservationService {
             LocalDateTime reservationEnd,
             Long machineId
     ) {
+        if (!reservationStart.isBefore(reservationEnd)) {
+            throw new IllegalArgumentException("예약 시작 시간은 종료 시간보다 빨라야 합니다.");
+        }
+
         Machine machine = machineRepository.findById(machineId)
                 .orElseThrow(IllegalArgumentException::new);
         List<Reservation> reservations = reservationRepository.findAllByMachineId(machineId);
