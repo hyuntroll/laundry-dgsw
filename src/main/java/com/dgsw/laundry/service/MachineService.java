@@ -21,6 +21,7 @@ public class MachineService {
         machine.setType(machineRequest.getMachineType());
         machine.setFloor(machineRequest.getFloor());
         machine.setReserved(false);
+        machine.setSerialNumber(String.valueOf(machineRequest.getSerialNumber()));
         machineRepository.save(machine);
         return machine;
     }
