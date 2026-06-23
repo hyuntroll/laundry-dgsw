@@ -23,6 +23,10 @@ public class MachineService {
         return machine;
     }
 
+    public List<Machine> getMachinesByFloor(Integer floor) {
+        return machineRepository.findMachineByFloor(floor);
+    }
+
     public List<Machine> findAll() {
         return machineRepository.findAll();
     }

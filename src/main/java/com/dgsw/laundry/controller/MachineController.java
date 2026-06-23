@@ -22,6 +22,11 @@ public class MachineController {
         return machineService.registerMachine(request);
     }
 
+    @GetMapping("/floor")
+    public List<Machine> getFloor(@RequestParam Integer floor) {
+        return machineService.getMachinesByFloor(floor);
+    }
+
     @GetMapping("/machines")
     public List<Machine> findAll() {
         return machineService.findAll();
