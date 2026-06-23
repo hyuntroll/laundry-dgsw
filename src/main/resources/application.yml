@@ -1,6 +1,6 @@
 spring:
   application:
-    name: school
+    name: laundry
 
   datasource:
     driver-class-name: org.h2.Driver
@@ -16,3 +16,9 @@ spring:
       hibernate:
         format_sql: true
     database-platform: org.hibernate.dialect.H2Dialect
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
