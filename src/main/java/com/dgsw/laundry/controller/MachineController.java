@@ -17,12 +17,12 @@ public class MachineController {
     @Autowired
     MachineService machineService;
 
-    @PostMapping("/machines")
+    @PostMapping("/machine")
     public Machine addMachine(@RequestBody @Valid MachineRequestDto request) {
         return machineService.registerMachine(request);
     }
 
-    @GetMapping("/machines/floor")
+    @GetMapping("/floor")
     public List<Machine> getFloor(@RequestParam Integer floor) {
         return machineService.getMachinesByFloor(floor);
     }

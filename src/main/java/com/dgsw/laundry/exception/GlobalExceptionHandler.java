@@ -20,6 +20,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ResponseDto> handleGeneric(Exception ex) {
+        ex.printStackTrace();
         return ResponseEntity.status(500).body(new ResponseDto("서버 오류"));
     }
 }
