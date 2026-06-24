@@ -1,7 +1,7 @@
 package com.dgsw.laundry.controller;
 
 import com.dgsw.laundry.dto.MachineRequestDto;
-import com.dgsw.laundry.entity.Machine;
+import com.dgsw.laundry.dto.MachineResponseDto;
 import com.dgsw.laundry.service.MachineService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +18,17 @@ public class MachineController {
     MachineService machineService;
 
     @PostMapping("/machines")
-    public Machine addMachine(@RequestBody @Valid MachineRequestDto request) {
+    public MachineResponseDto addMachine(@RequestBody @Valid MachineRequestDto request) {
         return machineService.registerMachine(request);
     }
 
     @GetMapping("/machines/floor")
-    public List<Machine> getFloor(@RequestParam Integer floor) {
+    public List<MachineResponseDto> getFloor(@RequestParam Integer floor) {
         return machineService.getMachinesByFloor(floor);
     }
 
     @GetMapping("/machines")
-    public List<Machine> findAll() {
+    public List<MachineResponseDto> findAll() {
         return machineService.findAll();
     }
 
@@ -38,5 +38,4 @@ public class MachineController {
         return "기기가 삭제되었습니다.";
     }
 }
-
 
